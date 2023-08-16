@@ -1,0 +1,27 @@
+<h1>JE SHOW UN RESTO</h1>
+
+<h1><%= @restaurant.name %></h1>
+
+<p><%= @restaurant.address %></p>
+
+<p><%= @restaurant.phone_number %></p>
+
+<p><%= @restaurant.category %></p>
+
+<button class="btn btn-secondary"><%= link_to "Revenir à l'accueil", restaurants_path %></button>
+
+<h1>LISTE DE TOUS MES AVIS</h1>
+
+<ul>
+<% @restaurant.reviews.each do |avis| %>
+  <li>Note: <%= avis.rating %> | <%= avis.content %> </li>
+  <% end %>
+  </ul>
+
+<h1>JE CREE UN NOUVEAU AVIS</h1>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
